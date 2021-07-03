@@ -313,7 +313,7 @@ def get_waka_time_stats():
             #tzone = data['data']['timezone']
             week_end = datetime.datetime.today() - datetime.timedelta(days=1)
             week_start = week_end - datetime.timedelta(days=6)
-            stats = stats + f"Week: {week_start.strftime('%d %B, %Y')} - {week_end.strftime('%d %B, %Y')}" + '\n\n'
+            stats = stats + f"From: {week_start.strftime('%d %B, %Y')} - {week_end.strftime('%d %B, %Y')}" + '\n\n'
 
         if showLanguage.lower() in truthy:
             empty = False

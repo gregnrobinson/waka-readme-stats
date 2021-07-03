@@ -465,9 +465,9 @@ def get_stats(github):
         stats += '**' + translate['Timeline'] + '**\n\n'
         branch_name = github.get_repo(f'{username}/{username}').default_branch
         stats = stats + '![Chart not found](https://raw.githubusercontent.com/' + username + '/' + username + '/' + branch_name + '/charts/bar_graph.png) \n\n'
-    today = date.today()
-    d1 = today.strftime("%d/%m/%Y")
-    stats = stats + "\n Last Updated on " + d1
+    #today = date.today()
+    #d1 = today.strftime("%d/%m/%Y")
+    #stats = stats + "\n Last Updated on " + d1
     
     return stats
 

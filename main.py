@@ -44,6 +44,8 @@ show_short_info = os.getenv('INPUT_SHOW_SHORT_INFO')
 locale = os.getenv('INPUT_LOCALE')
 commit_by_me = os.getenv('INPUT_COMMIT_BY_ME')
 ignored_repos_name = str(os.getenv('INPUT_IGNORED_REPOS') or '').replace(' ', '').split(',')
+show_updated_date = os.getenv('INPUT_SHOW_UPDATED_DATE')
+commit_message = os.getenv('INPUT_COMMIT_MESSAGE')
 show_waka_stats = 'y'
 # The GraphQL query to get commit data.
 userInfoQuery = """
@@ -467,9 +469,17 @@ def get_stats(github):
         stats += '**' + translate['Timeline'] + '**\n\n'
         branch_name = github.get_repo(f'{username}/{username}').default_branch
         stats = stats + '![Chart not found](https://raw.githubusercontent.com/' + username + '/' + username + '/' + branch_name + '/charts/bar_graph.png) \n\n'
+<<<<<<< HEAD
     #today = date.today()
     #d1 = today.strftime("%d/%m/%Y")
     #stats = stats + "\n Last Updated on " + d1
+=======
+    
+    if show_updated_date.lower() in truthy:
+        today = date.today()
+        d1 = today.strftime("%d/%m/%Y")
+        stats = stats + "\n Last Updated on " + d1
+>>>>>>> c955b6877e63d45d95174793639ddf3466d8fc10
     
     return stats
 
@@ -520,11 +530,11 @@ if __name__ == '__main__':
             committer = InputGitAuthor('readme-bot', '41898282+github-actions[bot]@users.noreply.github.com')
         if new_readme != rdmd:
             try:
-                repo.update_file(path=contents.path, message='Updated with Dev Metrics',
+                repo.update_file(path=contents.path, message=commit_message,
                                  content=new_readme, sha=contents.sha, branch='master',
                                  committer=committer)
             except:
-                repo.update_file(path=contents.path, message='Updated with Dev Metrics',
+                repo.update_file(path=contents.path, message=commit_message,
                                  content=new_readme, sha=contents.sha, branch='main',
                                  committer=committer)
             print("Readme updated")

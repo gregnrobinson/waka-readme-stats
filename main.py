@@ -473,7 +473,7 @@ def get_stats(github):
     if show_updated_date.lower() in truthy:
         today = date.today()
         d1 = today.strftime("%d/%m/%Y")
-        stats = stats + d1
+        stats = stats
     
     return stats
 
